@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd3rqf4kp6gn2"]
+[gd_scene load_steps=11 format=3 uid="uid://6n1ptjcw3d6s"]
 
-[ext_resource type="Script" uid="uid://bxr4n4e0vovuj" path="res://Enemy/enemy.gd" id="1_7vngr"]
-[ext_resource type="Texture2D" uid="uid://bptqa38jtikxk" path="res://Textures/Enemy/kolbold_weak.png" id="1_q4ln2"]
-[ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_kxsfh"]
-[ext_resource type="PackedScene" uid="uid://dcqcpl0qq20rt" path="res://utility/hit_box.tscn" id="4_f45p3"]
+[ext_resource type="Script" uid="uid://bxr4n4e0vovuj" path="res://Enemy/enemy.gd" id="1_lseba"]
+[ext_resource type="Texture2D" uid="uid://bhdid4n8dju38" path="res://Textures/Enemy/cyclops.png" id="2_lseba"]
+[ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_a4csl"]
+[ext_resource type="PackedScene" uid="uid://dcqcpl0qq20rt" path="res://utility/hit_box.tscn" id="4_spq5n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vngr"]
-radius = 8.0
+radius = 11.0
 height = 22.0
 
 [sub_resource type="Animation" id="Animation_kxsfh"]
@@ -48,25 +48,26 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuxmm"]
-size = Vector2(10, 14)
+size = Vector2(20, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73wqc"]
-size = Vector2(9, 17)
+size = Vector2(23.5, 22)
 
-[node name="Enemy_kobold_w" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy_cyclop" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_7vngr")
-movement_speed = 25.0
+script = ExtResource("1_lseba")
+movement_speed = 16.0
+hp = 100
+damage = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_q4ln2")
+texture = ExtResource("2_lseba")
 flip_h = true
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_7vngr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -74,18 +75,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_f45p3")
 }
 
-[node name="HurtBox" parent="." instance=ExtResource("3_kxsfh")]
+[node name="HurtBox" parent="." instance=ExtResource("3_a4csl")]
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(-1, 3)
 shape = SubResource("RectangleShape2D_vuxmm")
 
-[node name="HitBox" parent="." instance=ExtResource("4_f45p3")]
+[node name="HitBox" parent="." instance=ExtResource("4_spq5n")]
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(-1, 3)
 shape = SubResource("RectangleShape2D_73wqc")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

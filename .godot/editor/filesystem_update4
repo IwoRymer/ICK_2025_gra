@@ -2,3 +2,9 @@ res://World/world.tscn
 res://Player/player.tscn
 res://utility/hit_box.tscn
 res://utility/hurt_box.tscn
+res://Enemy/enemy_kobold_w.tscn
+res://Enemy/enemy_kobold_w.gd
+res://Enemy/enemy_kobold_s.tscn
+res://Enemy/enemy_cyclops.tscn
+res://Enemy/enemy_juggernaut.tscn
+res://Enemy/enemy_super.tscn
