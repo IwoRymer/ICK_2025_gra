@@ -54,6 +54,8 @@ size = Vector2(18, 26)
 size = Vector2(22, 25)
 
 [node name="Enemy_kobold_w" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_7vngr")
 movement_speed = 25.0
 

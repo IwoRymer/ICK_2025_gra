@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Survivors Clone"
+config/name="CyberBug Combat"
 run/main_scene="uid://cbad64o27a5k7"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
