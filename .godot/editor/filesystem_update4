@@ -1,9 +1,8 @@
-res://Player/player.tscn
 res://World/world.tscn
-res://Player/player.gd
-res://Enemy/enemy_kobold_w.tscn
-res://Enemy/enemy_kobold_w.gd
+res://Player/player.tscn
 res://utility/hit_box.tscn
-res://utility/hit_box.gd
-res://hurt_box.gd
 res://utility/hurt_box.tscn
+res://utility/enemy_spawner.tscn
+res://Enemy/enemy_kobold_w.tscn
+res://utility/enemy_spawner.gd
+res://utility/spawn_info.gd
