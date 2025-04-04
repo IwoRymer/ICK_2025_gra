@@ -1,9 +1,9 @@
-res://Player/player.tscn
 res://World/world.tscn
-res://Player/player.gd
+res://Player/player.tscn
 res://Enemy/enemy_kobold_w.tscn
-res://Enemy/enemy_kobold_w.gd
 res://utility/hit_box.tscn
-res://utility/hit_box.gd
-res://hurt_box.gd
 res://utility/hurt_box.tscn
+res://Player/ice_spear.tscn
+res://Player/Attack/ice_spear.gd
+res://Player/player.gd
+res://hurt_box.gd

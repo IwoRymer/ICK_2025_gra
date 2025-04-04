@@ -1,7 +1,9 @@
-Timer
 CollisionShape2D
 Area2D
+Timer
+Node2D
+AudioStreamPlayer
+Sprite2D
 AnimationPlayer
 Camera2D
-Sprite2D
 CharacterBody2D
