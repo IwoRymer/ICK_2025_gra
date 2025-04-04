@@ -8,16 +8,28 @@ var hp = 80
 
 #Attacks
 var iceSpear = preload("res://Player/ice_spear.tscn")
+var last_movement = Vector2.UP
+var Tornado = preload("res://Player/Attack/tornado.tscn")
+
 
 #Attack timers
 @onready var IceSpearTimer = get_node("Attacks/IceSpearTimer")
 @onready var IceSpearAtkTimer = get_node("Attacks/IceSpearTimer/IceSpearAttackTImer")
+
+@onready var TornadoTimer = get_node("%TornadoTimer")
+@onready var TornadoAtkTimer = get_node("%TornadoAttackTimer")
 
 #Ice Spear
 var IceSpear_Ammo = 0
 var IceSpear_BaseAmmo = 1
 var IceSpear_attackspeed = 1.5
 var IceSpear_level = 1
+
+# Tornado
+var Tornado_Ammo = 0
+var Tornado_BaseAmmo = 1
+var Tornado_attackspeed = 3
+var Tornado_level = 1
 
 #Enemy related
 var EnemyClose = []
@@ -35,6 +47,11 @@ func attack():
 		IceSpearTimer.wait_time = IceSpear_attackspeed
 		if IceSpearTimer.is_stopped():
 			IceSpearTimer.start()
+	
+	if Tornado_level > 0:
+		TornadoTimer.wait_time = Tornado_attackspeed
+		if TornadoTimer.is_stopped():
+			TornadoTimer.start()
 
 func _ready() -> void:
 	attack()
@@ -50,6 +67,7 @@ func movement():
 		sprite.flip_h = false
 	
 	if movement != Vector2.ZERO:
+		last_movement = movement
 		if walkTimer.is_stopped():
 			if sprite.frame >= sprite.hframes -1:
 				sprite.frame = 0
@@ -67,12 +85,6 @@ func _on_hurt_box_hurt(damage: Variant) -> void:
 	pass # Replace with function body.
 
 
-func _on_ice_spear_timer_timeout() -> void:
-	IceSpear_Ammo += IceSpear_BaseAmmo
-	IceSpearAtkTimer.start()
-	pass # Replace with function body.
-
-
 func get_random_target():
 	if EnemyClose.size() > 0:
 		return EnemyClose.pick_random().global_position
@@ -80,6 +92,10 @@ func get_random_target():
 		return Vector2.UP
 	pass
 
+func _on_ice_spear_timer_timeout() -> void:
+	IceSpear_Ammo += IceSpear_BaseAmmo
+	IceSpearAtkTimer.start()
+	pass # Replace with function body.
 
 func _on_ice_spear_attack_t_imer_timeout() -> void:
 	if IceSpear_Ammo > 0:
@@ -93,6 +109,26 @@ func _on_ice_spear_attack_t_imer_timeout() -> void:
 			IceSpearAtkTimer.start()
 		else:
 			IceSpearAtkTimer.stop()
+	pass # Replace with function body.
+
+func _on_tornado_timer_timeout() -> void:
+	Tornado_Ammo += Tornado_BaseAmmo
+	TornadoAtkTimer.start()
+	pass # Replace with function body.
+
+
+func _on_tornado_attack_timer_timeout() -> void:
+	if Tornado_Ammo > 0:
+		var Tornado_Attack = Tornado.instantiate()
+		Tornado_Attack.position = position
+		Tornado_Attack.last_movement = last_movement
+		Tornado_Attack.level = Tornado_level
+		add_child(Tornado_Attack)
+		Tornado_Ammo -= 1
+		if Tornado_Ammo > 0:
+			TornadoAtkTimer.start()
+		else:
+			TornadoAtkTimer.stop()
 	pass # Replace with function body.
 
 

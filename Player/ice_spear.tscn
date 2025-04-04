@@ -8,6 +8,7 @@
 size = Vector2(33.234, 7.07107)
 
 [node name="IceSpear" type="Area2D" groups=["attack"]]
+top_level = true
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 0
@@ -19,7 +20,6 @@ texture = ExtResource("1_b4t71")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.250001, -0.75)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jmf2g")
 
 [node name="Timer" type="Timer" parent="."]
