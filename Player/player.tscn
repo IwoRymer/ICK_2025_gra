@@ -32,6 +32,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_btcbx")]
+collision_layer = 1
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]

@@ -13,6 +13,9 @@ var hp = 80
 
 func _physics_process(delta: float) -> void:
 	movement()
+	
+func _ready():
+	add_to_group("player")
 
 
 func movement():
@@ -41,3 +44,7 @@ func _on_hurt_box_hurt(damage: Variant) -> void:
 	hp -= damage
 	print(hp)
 	pass # Replace with function body.
+
+func take_damage(dmg: int):
+	hp -= dmg
+	print("pocisk ",hp)

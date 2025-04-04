@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 
-
 func _on_hurt_box_hurt(damage: Variant) -> void:
 	hp -= damage
 	if hp <= 0:
