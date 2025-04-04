@@ -22,6 +22,9 @@ func _ready():
 			damage = 5
 			knock_ammmount = 100
 			attack_size = 1.0
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2(1,1)*attack_size, 1).set_trans(Tween.TRANS_QUINT).set_ease(tween.EASE_OUT)  # size, time
+	tween.play()
 
 func _physics_process(delta: float) -> void:
 	position += angle * speed * delta
