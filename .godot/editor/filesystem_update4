@@ -1,6 +1,3 @@
 res://World/world.tscn
-res://World/udp_server.gd
-res://Enemy/enemy_kobold_w.tscn
 res://utility/hit_box.tscn
 res://utility/hurt_box.tscn
-res://World/test_node.gd

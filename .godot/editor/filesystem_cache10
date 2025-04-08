@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1743700224
+::res://::1743780721
 hurt_box.gd::GDScript/GDScript::805089554605374087::1743615221::0::1::::<>Area2D<><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::1730451811002220422::1743615221::1743615321::1::::<><><>0<>0<>063692475fde08dc78137f0d940c6032<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile/TextFile::-1::1743615221::0::1::::<><><>0<>0<><>::
@@ -19,9 +19,9 @@ Lose.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::7778632345785980427::174361
 tornado.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::5299625792330424441::1743615221::1743615321::1::::<><><>0<>0<>fd3a868d4895eba59f8f584e8126f2db<>res://.godot/imported/tornado.ogg-905b83d8ef1ce0aac3ced9ac6eac1455.oggvorbisstr::
 Victory.wav::AudioStreamWAV/AudioStreamWAV::3744320139033369417::1743615221::1743615321::1::::<><><>0<>0<>a4c454500f6c041c7a8f2311c62471eb<>res://.godot/imported/Victory.wav-bd3be9d6414a4a02503c4b72ad5dc7da.sample::
 woosh.wav::AudioStreamWAV/AudioStreamWAV::7679086175408862915::1743615221::1743615321::1::::<><><>0<>0<>e81b4f98c61c62f0c8473e66b44bdf9d<>res://.godot/imported/woosh.wav-ab061df73379afad44a9e04e929634d6.sample::
-::res://Enemy/::1743618649
+::res://Enemy/::1743701276
 enemy_kobold_w.gd::GDScript/GDScript::4037644047818748901::1743615221::0::1::::<>CharacterBody2D<><>0<>0<><>::
-enemy_kobold_w.tscn::PackedScene::7428692228578286165::1743618649::0::1::::<><><>0<>0<><>::uid://bxr4n4e0vovuj::::res://Enemy/enemy_kobold_w.gd<>uid://bptqa38jtikxk::::res://Textures/Enemy/kolbold_weak.png<>uid://7ywnno2cpwrg::::res://utility/hurt_box.tscn<>uid://dcqcpl0qq20rt::::res://utility/hit_box.tscn
+enemy_kobold_w.tscn::PackedScene/PackedScene::7428692228578286165::1743701276::0::1::::<><><>0<>0<><>::uid://bxr4n4e0vovuj::::res://Enemy/enemy_kobold_w.gd<>uid://bptqa38jtikxk::::res://Textures/Enemy/kolbold_weak.png<>uid://7ywnno2cpwrg::::res://utility/hurt_box.tscn<>uid://dcqcpl0qq20rt::::res://utility/hit_box.tscn
 ::res://Font/::1743615321
 tenderness.otf::FontFile/FontFile::2034096497532756176::1743615221::1743615321::1::::<><><>0<>0<>14c1576547bdb3876c8847a4ce570224<>res://.godot/imported/tenderness.otf-cc0f0d2896288282a6e40e96c8bf4c8e.fontdata::
 ::res://Player/::1743615221
@@ -63,10 +63,11 @@ sword.png::CompressedTexture2D/CompressedTexture2D::455257758910680536::17436152
 tornado.png::CompressedTexture2D/CompressedTexture2D::1496619197124729985::1743615221::1743615321::1::::<><><>0<>0<>557d2421ff65d3251f8cf61df5a924b2<>res://.godot/imported/tornado.png-84bd3c437635d0edcdda9f5a76ecfe31.ctex::
 ::res://Textures/Player/::1743615321
 player_sprite.png::CompressedTexture2D/CompressedTexture2D::7185198474937958560::1743615221::1743615321::1::::<><><>0<>0<>a86f0acfcd5bcaf4d0603c1efd70a8c4<>res://.godot/imported/player_sprite.png-99975927c87d39d0f4e4a4a21b6d0fe5.ctex::
-::res://utility/::1743618649
+::res://utility/::1743701469
 hit_box.gd::GDScript/GDScript::3066142340856359825::1743615221::0::1::::<>Area2D<><>0<>0<><>::
-hit_box.tscn::PackedScene::7332818620440831569::1743618649::0::1::::<><><>0<>0<><>::uid://bjxi6flueth4d::::res://utility/hit_box.gd
-hurt_box.tscn::PackedScene::2296947757336955160::1743618649::0::1::::<><><>0<>0<><>::uid://lp8ybxi70056::::res://hurt_box.gd
-::res://World/::1743620360
-udp_server.gd::GDScript::2135920089681558430::1743618648::0::1::::<>Node<><>0<>0<><>::
-world.tscn::PackedScene::4843269267687555916::1743620360::0::1::::<><><>0<>0<><>::uid://bgi7c5kl8liga::::res://Textures/dirt_full_new.png<>uid://b75a1aocdsdv3::::res://Player/player.tscn<>uid://dd3rqf4kp6gn2::::res://Enemy/enemy_kobold_w.tscn<>uid://5owj6lrgp11k::::res://World/udp_server.gd
+hit_box.tscn::PackedScene/PackedScene::7332818620440831569::1743701469::0::1::::<><><>0<>0<><>::uid://bjxi6flueth4d::::res://utility/hit_box.gd
+hurt_box.tscn::PackedScene/PackedScene::2296947757336955160::1743701469::0::1::::<><><>0<>0<><>::uid://lp8ybxi70056::::res://hurt_box.gd
+::res://World/::1743702121
+example_external_input_node.gd::GDScript/GDScript::8719281611740800393::1743701573::0::1::::<>Node<><>0<>0<><>::
+udp_server.gd::GDScript/GDScript::2135920089681558430::1743701514::0::1::::<>Node<><>0<>0<><>::
+world.tscn::PackedScene/PackedScene::4843269267687555916::1743702121::0::1::::<><><>0<>0<><>::uid://bgi7c5kl8liga::::res://Textures/dirt_full_new.png<>uid://b75a1aocdsdv3::::res://Player/player.tscn<>uid://dd3rqf4kp6gn2::::res://Enemy/enemy_kobold_w.tscn<>uid://5owj6lrgp11k::::res://World/udp_server.gd<>uid://dwhxkae5xrd3n::::res://World/example_external_input_node.gd
