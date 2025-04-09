@@ -1,9 +1,3 @@
-res://Player/ice_spear.tscn
 res://World/world.tscn
-res://Player/player.tscn
-res://Enemy/enemy_kobold_w.tscn
 res://utility/hit_box.tscn
 res://utility/hurt_box.tscn
-res://Player/Attack/tornado.tscn
-res://Player/Attack/tornado.gd
-res://Player/player.gd
