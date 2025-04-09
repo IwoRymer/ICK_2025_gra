@@ -44,6 +44,15 @@ texture = ExtResource("1_62w18")
 region_enabled = true
 region_rect = Rect2(0, 0, 1500, 1500)
 
+[node name="Enemy_kobold_w2" parent="Background" instance=ExtResource("3_j8job")]
+position = Vector2(-268, -72)
+
+[node name="Enemy_kobold_w3" parent="Background" instance=ExtResource("3_j8job")]
+position = Vector2(-300, -17)
+
+[node name="Enemy_kobold_w2" parent="Background/Enemy_kobold_w3" instance=ExtResource("3_j8job")]
+position = Vector2(-268, -72)
+
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
 
 <<<<<<< HEAD
@@ -54,7 +63,7 @@ spawns = Array[ExtResource("4_3f78f")]([SubResource("Resource_3f78f"), SubResour
 position = Vector2(-305, 58)
 
 [node name="Enemy_kobold_w2" parent="." instance=ExtResource("3_j8job")]
-position = Vector2(-268, -72)
+position = Vector2(-175, -81)
 
 [node name="UDPServer" type="Node" parent="."]
 process_mode = 3
