@@ -14,6 +14,7 @@ func _ready():
 	
 func _process(delta):
 	server.poll()
+	control_vals.fill(null)
 	
 	if server.is_connection_available():
 		var peer = server.take_connection()
@@ -29,8 +30,9 @@ func _process(delta):
 		if !array_bytes.is_empty():
 			var id = (array_bytes.slice(0, 1)).get_string_from_utf8()
 			var packet_string = (array_bytes.slice(1)).get_string_from_utf8()
-
+			
 			control_vals[int(id)] = packet_string
+			#print(control_vals)
 			client_control.emit(control_vals)
 		
 	

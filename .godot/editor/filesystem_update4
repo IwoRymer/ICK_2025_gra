@@ -1,6 +1,6 @@
+res://Player/player.tscn
+res://World/udp_server.gd
 res://utility/hit_box.tscn
 res://utility/hurt_box.tscn
 res://World/world.tscn
 res://utility/enemy_spawner.tscn
-res://Player/player.tscn
-res://Player/player.gd
