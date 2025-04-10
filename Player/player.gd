@@ -9,6 +9,14 @@ var hp = 80
 var healing_amount = 10
 var healing_cooldown = 5 #s
 
+var can_use_shield = true
+var shield_active = false
+var shield_duration = 3.0 
+
+@onready var shield_node = $Shield
+@onready var shield_timer = $shieldTimer
+@onready var shield_cooldown_timer = $shieldCooldownTimer
+
 @onready var sprite = $Sprite2D
 @onready var walkTimer = get_node("%walkTimer")
 @onready var healTimer = get_node("%healTimer")
@@ -25,6 +33,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("heal"):
 		heal(healing_amount)
+	if Input.is_action_just_pressed("shield"):
+		activate_shield()
 
 func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -49,13 +59,20 @@ func movement():
 
 
 func _on_hurt_box_hurt(damage: Variant) -> void:
+	if shield_active:
+		print("Tarcza aktywna – brak obrażeń")
+		return
 	hp -= damage
 	print(hp)
-	pass # Replace with function body.
+
 
 func take_damage(dmg: int):
+	if shield_active:
+		print("Tarcza aktywna – brak obrażeń")
+		return
 	hp -= dmg
-	print("pocisk ",hp)
+	print("pocisk ", hp)
+
 
 func heal(dmg: int):
 	if healTimer.is_stopped():
@@ -73,3 +90,24 @@ func _on_udp_server_client_control(control_vals: Variant) -> void:
 	if control_vals[0] != null:
 		if control_vals[0][0] == "1":
 			heal(healing_amount)
+		if control_vals[0][0] == "2": 
+			activate_shield()
+			
+			
+func activate_shield():
+	if not shield_active and can_use_shield:
+		shield_active = true
+		can_use_shield = false
+		shield_node.visible = true
+		shield_node.get_node("ShieldCollision").disabled = false
+		shield_timer.start()
+		shield_cooldown_timer.start()
+
+
+func _on_shield_timer_timeout() -> void:
+	shield_active = false
+	shield_node.visible = false
+	shield_node.get_node("ShieldCollision").disabled = true
+
+func _on_shield_cooldown_timer_timeout() -> void:
+	can_use_shield = true

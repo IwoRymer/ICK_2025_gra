@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b75a1aocdsdv3"]
+[gd_scene load_steps=8 format=3 uid="uid://b75a1aocdsdv3"]
 
 [ext_resource type="Script" uid="uid://dvdmc4ip1c1fo" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://damtf0q0563bw" path="res://Textures/Player/player_sprite.png" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://boc3b0g7c4dr4" path="res://Textures/Player/tarcza.jpg" id="4_gwnis"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 5.0
@@ -10,6 +11,9 @@ height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwnis"]
 size = Vector2(14.5, 22.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btcbx"]
+radius = 30.8058
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -44,7 +48,28 @@ collision_mask = 2
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_gwnis")
 
+[node name="Shield" type="Node2D" parent="."]
+visible = false
+
+[node name="ShieldSprite" type="Sprite2D" parent="Shield"]
+texture = ExtResource("4_gwnis")
+
+[node name="ShieldCollision" type="CollisionShape2D" parent="Shield"]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_btcbx")
+disabled = true
+
+[node name="shieldTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="shieldCooldownTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
 [connection signal="timeout" from="healTimer" to="." method="_on_heal_timer_timeout"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="shieldCooldownTimer" to="." method="_on_shield_cooldown_timer_timeout"]
 
 [editable path="HurtBox"]
