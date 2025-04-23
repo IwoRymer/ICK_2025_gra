@@ -10,3 +10,7 @@ res://Enemy/enemy_cyclops.tscn
 res://Enemy/enemy_kobold_s.tscn
 res://Player/Attack/ice_spear_error.tscn
 res://Player/ice_spear.tscn
+res://Player/player.tscn
+res://Player/player.gd
+res://Enemy/enemy_shooter.gd
+res://utility/enemy_spawner.tscn

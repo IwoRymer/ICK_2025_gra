@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt60hq3787bmm"]
+
+[ext_resource type="Texture2D" uid="uid://boc3b0g7c4dr4" path="res://Textures/Player/tarcza.jpg" id="1_vuocu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffst0"]
+radius = 30.8058
+
+[node name="Shield" type="Node2D"]
+visible = false
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_vuocu")
+
+[node name="ShieldCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_ffst0")
+disabled = true

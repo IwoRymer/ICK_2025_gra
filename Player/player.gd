@@ -13,8 +13,17 @@ var Tornado = preload("res://Player/Attack/tornado.tscn")
 @onready var player: CharacterBody2D = $"."
 @onready var laser: Node2D = $Laser
 
+var healing_amount = 10
+var healing_cooldown = 5 #s
 
+var can_use_shield = true
+var shield_active = false
+var shield_duration = 3.0 
+@onready var healTimer = get_node("%healTImer")
 
+@onready var shield_node = $Shield
+@onready var shield_timer = $shieldTimer
+@onready var shield_cooldown_timer = $shieldCooldownTImer
 
 #Attack timers
 @onready var IceSpearTimer = get_node("Attacks/IceSpearTimer")
@@ -44,6 +53,10 @@ var EnemyClose = []
 ## delta default = 1/60 s
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("heal"):
+		heal(healing_amount)
+	if Input.is_action_just_pressed("shield"):
+		activate_shield()
 	if Input.is_action_pressed("Fire_laser"):
 		laser.activate()
 	else:
@@ -66,6 +79,7 @@ func attack():
 func _ready() -> void:
 	attack()
 	add_to_group("player")
+	healTimer.wait_time = healing_cooldown
 
 
 func movement():
@@ -90,8 +104,18 @@ func movement():
 	velocity = movement.normalized()*movement_speed
 	move_and_slide()
 
+func heal(dmg: int):
+	if healTimer.is_stopped():
+		hp += dmg
+		sprite.self_modulate.g = 0.3
+		sprite.self_modulate.b = 0.3
+		
+		healTimer.start()
 
 func _on_hurt_box_hurt(damage: Variant) -> void:
+	if shield_active:
+		print("Tarcza aktywna – brak obrażeń")
+		return
 	hp -= damage
 	print(hp)
 	pass # Replace with function body.
@@ -157,5 +181,41 @@ func _on_enemy_detection_area_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
 
 func take_damage(dmg: int):
+	if shield_active:
+		print("Tarcza aktywna – brak obrażeń")
+		return
 	hp -= dmg
 	print("pocisk ",hp)
+
+
+func _on_heal_t_imer_timeout() -> void:
+	sprite.self_modulate.g = 1
+	sprite.self_modulate.b = 1
+	pass # Replace with function body.
+
+func _on_udp_server_client_control(control_vals: Variant) -> void:
+	if control_vals[0] != null:
+		if control_vals[0][0] == "1":
+			heal(healing_amount)
+		if control_vals[0][0] == "2": 
+			activate_shield()
+
+func activate_shield():
+	if not shield_active and can_use_shield:
+		shield_active = true
+		can_use_shield = false
+		shield_node.visible = true
+		shield_node.get_node("ShieldCollision").disabled = false
+		shield_timer.start()
+		shield_cooldown_timer.start()
+
+func _on_shield_timer_timeout() -> void:
+	shield_active = false
+	shield_node.visible = false
+	shield_node.get_node("ShieldCollision").disabled = true 
+	pass # Replace with function body.
+
+
+func _on_shield_cooldown_t_imer_timeout() -> void:
+	can_use_shield = true
+	pass # Replace with function body.
