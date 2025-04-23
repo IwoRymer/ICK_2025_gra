@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b75a1aocdsdv3"]
+[gd_scene load_steps=8 format=3 uid="uid://b75a1aocdsdv3"]
 
 [ext_resource type="Script" uid="uid://dvdmc4ip1c1fo" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://damtf0q0563bw" path="res://Textures/Player/player_sprite.png" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://cx56lowgyoqld" path="res://Player/Attack/laser.tscn" id="4_gwnis"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 5.0
@@ -66,6 +67,9 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_btcbx")
+
+[node name="Laser" parent="." instance=ExtResource("4_gwnis")]
+position = Vector2(3, 0)
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attacks/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]

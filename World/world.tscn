@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbad64o27a5k7"]
+[gd_scene load_steps=10 format=3 uid="uid://cbad64o27a5k7"]
 
 [ext_resource type="Texture2D" uid="uid://bgi7c5kl8liga" path="res://Textures/dirt_full_new.png" id="1_62w18"]
 [ext_resource type="PackedScene" uid="uid://b75a1aocdsdv3" path="res://Player/player.tscn" id="2_8a836"]
 [ext_resource type="PackedScene" uid="uid://cle3nj6va4gdh" path="res://utility/enemy_spawner.tscn" id="3_j8job"]
 [ext_resource type="Script" uid="uid://bp8c7eepkxp5y" path="res://utility/spawn_info.gd" id="4_3f78f"]
 [ext_resource type="PackedScene" uid="uid://dd3rqf4kp6gn2" path="res://Enemy/enemy_kobold_w.tscn" id="5_k8do8"]
+[ext_resource type="PackedScene" uid="uid://c8dk1t2gpdhtb" path="res://Enemy/Static_target.tscn" id="7_yf0ba"]
 [ext_resource type="PackedScene" uid="uid://brlskw0rqqcgb" path="res://Enemy/enemy_shooter.tscn" id="9_oe8m4"]
 
 [sub_resource type="Resource" id="Resource_3f78f"]
@@ -43,6 +44,16 @@ position = Vector2(-300, -17)
 [node name="Enemy_kobold_w2" parent="Background/Enemy_kobold_w3" instance=ExtResource("3_j8job")]
 position = Vector2(-268, -72)
 
+[node name="StaticTarget2" parent="Background" instance=ExtResource("7_yf0ba")]
+position = Vector2(300, -245)
+
+[node name="Asteroid" parent="Background/StaticTarget2" index="0"]
+position = Vector2(2, 30)
+scale = Vector2(0.614286, 0.6)
+
+[node name="Asteroid_Hurtbox" parent="Background/StaticTarget2" index="1"]
+position = Vector2(2, 29)
+
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
 
 [node name="Enemy_kobold_w" parent="." instance=ExtResource("3_j8job")]
@@ -53,3 +64,16 @@ position = Vector2(-268, -72)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_j8job")]
 spawns = Array[ExtResource("4_3f78f")]([SubResource("Resource_3f78f"), SubResource("Resource_k8do8")])
+
+[node name="StaticTarget2" parent="." instance=ExtResource("7_yf0ba")]
+position = Vector2(350, -368)
+
+[node name="Asteroid" parent="StaticTarget2" index="0"]
+position = Vector2(2, 30)
+scale = Vector2(0.614286, 0.6)
+
+[node name="Asteroid_Hurtbox" parent="StaticTarget2" index="1"]
+position = Vector2(2, 29)
+
+[editable path="Background/StaticTarget2"]
+[editable path="StaticTarget2"]

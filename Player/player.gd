@@ -10,6 +10,10 @@ var hp = 80
 var iceSpear = preload("res://Player/ice_spear.tscn")
 var last_movement = Vector2.UP
 var Tornado = preload("res://Player/Attack/tornado.tscn")
+@onready var player: CharacterBody2D = $"."
+@onready var laser: Node2D = $Laser
+
+
 
 
 #Attack timers
@@ -38,6 +42,12 @@ var EnemyClose = []
 @onready var walkTimer = get_node("%walkTimer")
 
 ## delta default = 1/60 s
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("Fire_laser"):
+		laser.activate()
+	else:
+		laser.deactivate()
 
 func _physics_process(delta: float) -> void:
 	movement()
