@@ -9,3 +9,6 @@ res://utility/enemy_spawner.tscn
 res://utility/hit_box.tscn
 res://Player/Attack/tornado.tscn
 res://Player/Attack/tornado.gd
+res://Enemy/enemy_cyclops.tscn
+res://Enemy/enemy_juggernaut.tscn
+res://Enemy/enemy_kobold_s.tscn

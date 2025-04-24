@@ -1,8 +1,10 @@
-res://Audio/SoundEffect
 res://Textures/Enemy
+res://Textures/Player
+res://Textures
+res://Enemy
+res://Audio/SoundEffect
 res://Player/Attack
 res://Player
 res://Enemy/Attack
 res://utility
-res://Enemy
 res://World
