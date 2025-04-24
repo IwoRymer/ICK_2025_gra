@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4ot1pv5hby1i"]
 
 [ext_resource type="Script" uid="uid://b8p07865krl3e" path="res://Player/Attack/tornado.gd" id="1_8dtsi"]
-[ext_resource type="Texture2D" uid="uid://vk8dnbpjnqbh" path="res://Textures/Items/Weapons/tornado.png" id="1_puvvi"]
+[ext_resource type="Texture2D" uid="uid://cl4m5pe0sg68d" path="res://Textures/Items/Weapons/emp_wave_pixelart.png" id="2_r4i0x"]
 [ext_resource type="AudioStream" uid="uid://chrgcejcuiqbx" path="res://Audio/SoundEffect/tornado.ogg" id="3_r4i0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dtsi"]
@@ -17,7 +17,7 @@ script = ExtResource("1_8dtsi")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.53674e-07, -1)
 scale = Vector2(1.14063, 1.06058)
-texture = ExtResource("1_puvvi")
+texture = ExtResource("2_r4i0x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8dtsi")
