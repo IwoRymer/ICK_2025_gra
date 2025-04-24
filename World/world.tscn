@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bp8c7eepkxp5y" path="res://utility/spawn_info.gd" id="4_3f78f"]
 [ext_resource type="PackedScene" uid="uid://dd3rqf4kp6gn2" path="res://Enemy/enemy_kobold_w.tscn" id="5_k8do8"]
 [ext_resource type="PackedScene" uid="uid://c8dk1t2gpdhtb" path="res://Enemy/Static_target.tscn" id="7_yf0ba"]
-[ext_resource type="PackedScene" path="res://udp_server.tscn" id="8_eidgh"]
+[ext_resource type="PackedScene" uid="uid://cxhef011devt8" path="res://udp_server.tscn" id="8_eidgh"]
 [ext_resource type="PackedScene" uid="uid://brlskw0rqqcgb" path="res://Enemy/enemy_shooter.tscn" id="9_oe8m4"]
 
 [sub_resource type="Resource" id="Resource_3f78f"]

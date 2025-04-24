@@ -27,14 +27,14 @@ func _ready() -> void:
 	var move_to_more = Vector2.ZERO
 	match last_movement:
 		Vector2.UP, Vector2.DOWN:
-			move_to_less = global_position + Vector2(randf_range(-1, -0.25), last_movement.y)*500
-			move_to_more = global_position + Vector2(randf_range(0.25, 1), last_movement.y)*500
+			move_to_less = global_position + Vector2(randf_range(-0.5, -0.25), last_movement.y)*500
+			move_to_more = global_position + Vector2(randf_range(0.25, 0.5), last_movement.y)*500
 		Vector2.RIGHT, Vector2.LEFT:
-			move_to_less = global_position + Vector2(last_movement.x, randf_range(-1, -0.25), )*500
-			move_to_more = global_position + Vector2(last_movement.x, randf_range(0.25, 1))*500
+			move_to_less = global_position + Vector2(last_movement.x, randf_range(-0.5, -0.25), )*500
+			move_to_more = global_position + Vector2(last_movement.x, randf_range(0.25, 0.5))*500
 		Vector2(1,1), Vector2(1,-1), Vector2(-1,1), Vector2(-1,-1):
-			move_to_less = global_position + Vector2(last_movement.x, last_movement.y * randf_range(0, 0.75))*500
-			move_to_less = global_position + Vector2(last_movement.x * randf_range(0, 0.75), last_movement.y)*500
+			move_to_less = global_position + Vector2(last_movement.x, last_movement.y * randf_range(-0.25, 0.25))*500
+			move_to_more = global_position + Vector2(last_movement.x * randf_range(-0.25, 0.25), last_movement.y)*500
 		
 	angle_less = global_position.direction_to(move_to_less)
 	angle_more = global_position.direction_to(move_to_more)

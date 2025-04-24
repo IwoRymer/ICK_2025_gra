@@ -18,7 +18,7 @@ var healing_cooldown = 5 #s
 
 var can_use_shield = true
 var shield_active = false
-var shield_duration = 3.0 
+var shield_duration = 4.0 
 @onready var healTimer = get_node("%healTImer")
 
 @onready var shield_node = $Shield

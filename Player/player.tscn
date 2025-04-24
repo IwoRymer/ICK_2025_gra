@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://damtf0q0563bw" path="res://Textures/Player/player_sprite.png" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://cx56lowgyoqld" path="res://Player/Attack/laser.tscn" id="4_gwnis"]
-[ext_resource type="PackedScene" path="res://Player/shield.tscn" id="5_k53q1"]
+[ext_resource type="PackedScene" uid="uid://dt60hq3787bmm" path="res://Player/shield.tscn" id="5_k53q1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 5.0

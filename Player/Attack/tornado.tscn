@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://chrgcejcuiqbx" path="res://Audio/SoundEffect/tornado.ogg" id="3_r4i0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dtsi"]
-size = Vector2(21.75, 31.5)
+size = Vector2(14.875, 25.75)
 
 [node name="Tornado" type="Area2D" groups=["attack"]]
 top_level = true
@@ -20,7 +20,6 @@ scale = Vector2(1.14063, 1.06058)
 texture = ExtResource("1_puvvi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-top_level = true
 shape = SubResource("RectangleShape2D_8dtsi")
 
 [node name="Timer" type="Timer" parent="."]
