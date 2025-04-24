@@ -33,6 +33,7 @@ func _process(delta):
 			
 			control_vals[int(id)] = packet_string
 			#print(control_vals)
-			client_control.emit(control_vals)
+			
+	client_control.emit(control_vals)
 		
 	

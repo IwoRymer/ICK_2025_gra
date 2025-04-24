@@ -4,7 +4,8 @@ extends CharacterBody2D
 ## Grounded - spada na dół ekranu
 
 var movement_speed = 40.0
-var hp = 80
+var maxHp = 80
+var hp = maxHp
 
 #Attacks
 var iceSpear = preload("res://Player/ice_spear.tscn")
@@ -49,6 +50,7 @@ var EnemyClose = []
 
 @onready var sprite = $Sprite2D
 @onready var walkTimer = get_node("%walkTimer")
+@onready var hpDisplay = get_node("%HpDisplay")
 
 ## delta default = 1/60 s
 
@@ -61,6 +63,8 @@ func _process(delta: float) -> void:
 		laser.activate()
 	else:
 		laser.deactivate()
+		
+	hpDisplay.text = str(hp)
 
 func _physics_process(delta: float) -> void:
 	movement()
@@ -107,6 +111,7 @@ func movement():
 func heal(dmg: int):
 	if healTimer.is_stopped():
 		hp += dmg
+		hp = min(hp, maxHp)
 		sprite.self_modulate.g = 0.3
 		sprite.self_modulate.b = 0.3
 		
@@ -191,14 +196,45 @@ func take_damage(dmg: int):
 func _on_heal_t_imer_timeout() -> void:
 	sprite.self_modulate.g = 1
 	sprite.self_modulate.b = 1
-	pass # Replace with function body.
+
+func press(action): 
+	Input.action_press(action)
+	#await get_tree().create_timer(0.5).timeout
+	Input.action_release(action)
+	
+func hold(action):
+	Input.action_press(action)
+	
+func release(action):
+	Input.action_release(action)
 
 func _on_udp_server_client_control(control_vals: Variant) -> void:
+	#print(control_vals)
 	if control_vals[0] != null:
 		if control_vals[0][0] == "1":
 			heal(healing_amount)
 		if control_vals[0][0] == "2": 
 			activate_shield()
+			
+	#movement from openpose
+	if control_vals[1] != null:
+		print(control_vals)
+		if control_vals[1][0] == "1":
+			hold("up")
+		else:
+			release("up")
+		if control_vals[1][1] == "1":
+			hold("down")
+		else:
+			release("down")
+		if control_vals[1][2] == "1":
+			hold("left")
+		else:
+			release("left")
+		if control_vals[1][3] == "1":
+			hold("right")
+		else:
+			release("right")
 
 func activate_shield():
 	if not shield_active and can_use_shield:

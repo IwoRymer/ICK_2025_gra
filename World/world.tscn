@@ -91,5 +91,7 @@ position = Vector2(110, 52)
 
 [node name="UDPServer" parent="." instance=ExtResource("8_eidgh")]
 
+[connection signal="client_control" from="UDPServer" to="Player" method="_on_udp_server_client_control"]
+
 [editable path="Background/StaticTarget2"]
 [editable path="StaticTarget2"]
