@@ -1,10 +1,106 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx56lowgyoqld"]
+[gd_scene load_steps=7 format=3 uid="uid://cx56lowgyoqld"]
 
 [ext_resource type="Script" uid="uid://cu1mw1wr667db" path="res://Player/Attack/laser.gd" id="1_dhqri"]
 [ext_resource type="AudioStream" uid="uid://bl4we7s2qfaej" path="res://Audio/SoundEffect/mininglaser.ogg" id="2_2dhkb"]
 
+[sub_resource type="Animation" id="Animation_dhqri"]
+resource_name = "start_beam"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beam:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.956863, 0, 0.0509804, 0), Color(0.956863, 0, 0.0509804, 0.196078), Color(0.956863, 0, 0.0509804, 0.392157), Color(0.956863, 0, 0.0509804, 0.588235), Color(0.956863, 0, 0.0509804, 0.784314), Color(0.956863, 0, 0.0509804, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glow:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.615686, 0.564706, 0), Color(0.996078, 0.615686, 0.564706, 0.156863), Color(0.996078, 0.615686, 0.564706, 0.313726), Color(0.996078, 0.615686, 0.564706, 0.470588), Color(0.996078, 0.615686, 0.564706, 0.627451), Color(0.996078, 0.615686, 0.564706, 0.784314)]
+}
+
+[sub_resource type="Animation" id="Animation_2dhkb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beam:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glow:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.996078, 0.615686, 0.564706, 0.588235)]
+}
+
+[sub_resource type="Animation" id="Animation_7ndqq"]
+resource_name = "stop_beam"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beam:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.956863, 0, 0.0509804, 1), Color(0.956863, 0, 0.0509804, 0.8), Color(0.956863, 0, 0.0509804, 0.6), Color(0.956863, 0, 0.0509804, 0.4), Color(0.956863, 0, 0.0509804, 0.2), Color(0.956863, 0, 0.0509804, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glow:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.615686, 0.564706, 0.784314), Color(0.996078, 0.615686, 0.564706, 0.627451), Color(0.996078, 0.615686, 0.564706, 0.470588), Color(0.996078, 0.615686, 0.564706, 0.313726), Color(0.996078, 0.615686, 0.564706, 0.156863), Color(0.996078, 0.615686, 0.564706, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2dhkb"]
+_data = {
+&"RESET": SubResource("Animation_2dhkb"),
+&"start_beam": SubResource("Animation_dhqri"),
+&"stop_beam": SubResource("Animation_7ndqq")
+}
+
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_dhqri")
+
+[node name="Glow" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 63, 0)
+width = 3.0
+default_color = Color(0.996078, 0.615686, 0.564706, 0.588235)
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="Beam" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 63, 0)
@@ -14,6 +110,15 @@ width = 1.0
 stream = ExtResource("2_2dhkb")
 
 [node name="RayCast" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(100, 0)
 collision_mask = 5
 collide_with_areas = true
+
+[node name="animation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_2dhkb")
+}
+
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]

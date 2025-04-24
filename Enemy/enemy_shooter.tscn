@@ -76,13 +76,13 @@ libraries = {
 }
 
 [node name="HurtBox" parent="." instance=ExtResource("3_gnwba")]
-collision_mask = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_vuxmm")
 
 [node name="HitBox" parent="." instance=ExtResource("4_fvfjj")]
-collision_layer = 2
+collision_layer = 3
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_73wqc")

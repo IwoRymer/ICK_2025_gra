@@ -13,3 +13,4 @@ res://Enemy/enemy_cyclops.tscn
 res://Enemy/enemy_juggernaut.tscn
 res://Enemy/enemy_kobold_s.tscn
 res://Player/ice_spear.tscn
+res://Player/Attack/laser.gd

@@ -58,9 +58,29 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shield"):
 		activate_shield()
 	if Input.is_action_pressed("Fire_laser"):
-		laser.activate()
+		if (laser.laser_charge > (laser.laser_min_charge * laser.laser_charge_max)):
+			laser.activate()
+		if laser.laser_charge <= 0:
+			laser.deactivate()
 	else:
 		laser.deactivate()
+	
+	if Input.is_action_pressed("attk_up"):
+		laser.laser_up = 1
+	else:
+		laser.laser_up = 0
+	if Input.is_action_pressed("attk_down"):
+		laser.laser_down = 1
+	else:
+		laser.laser_down = 0
+	if Input.is_action_pressed("attk_left"):
+		laser.laser_left = 1
+	else:
+		laser.laser_left = 0
+	if Input.is_action_pressed("attk_right"):
+		laser.laser_right = 1
+	else:
+		laser.laser_right = 0
 
 func _physics_process(delta: float) -> void:
 	movement()

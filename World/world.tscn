@@ -16,7 +16,7 @@ time_start = 0
 time_end = 100
 enemy = ExtResource("5_k8do8")
 enemy_num = 1
-enemy_spawn_delay = 2
+enemy_spawn_delay = 5
 metadata/_custom_type_script = "uid://bp8c7eepkxp5y"
 
 [sub_resource type="Resource" id="Resource_k8do8"]
@@ -24,7 +24,7 @@ script = ExtResource("4_3f78f")
 time_start = 0
 time_end = 100
 enemy = ExtResource("9_oe8m4")
-enemy_num = 1
+enemy_num = 2
 enemy_spawn_delay = 15
 metadata/_custom_type_script = "uid://bp8c7eepkxp5y"
 
