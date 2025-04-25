@@ -1,4 +1,4 @@
-RichTextLabel
+AnimationPlayer
 Timer
 RayCast2D
 CollisionShape2D
@@ -10,5 +10,4 @@ CharacterBody2D
 Node2D
 AudioStreamPlayer
 AudioStreamPlayer
-AnimationPlayer
 Camera2D

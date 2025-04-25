@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bmr0pwk7ujldl" path="res://Audio/SoundEffect/ice.wav" id="3_7vhgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmf2g"]
-size = Vector2(33.234, 7.07107)
+size = Vector2(28.2843, 7.07107)
 
 [node name="IceSpear" type="Area2D" groups=["attack"]]
 top_level = true
@@ -15,10 +15,11 @@ collision_mask = 0
 script = ExtResource("1_jmf2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.40625, 1.25)
 texture = ExtResource("2_7vhgj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.250001, -0.75)
+position = Vector2(-10, -10)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_jmf2g")
 

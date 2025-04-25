@@ -1,2 +1,10 @@
+res://World/world.tscn
+res://Enemy/Static_target.tscn
+res://Player/Attack/laser.tscn
+res://Enemy/enemy_kobold_w.tscn
+res://utility/hit_box.tscn
+res://Player/Attack/tornado.tscn
+res://Enemy/enemy_kobold_s.tscn
 res://Player/player.tscn
-res://Player/player.gd
+res://Player/ice_spear.tscn
+res://Enemy/enemy_shooter.tscn
