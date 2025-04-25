@@ -48,10 +48,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuxmm"]
-size = Vector2(17, 22)
+size = Vector2(13, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73wqc"]
-size = Vector2(19, 24)
+size = Vector2(18.5, 24)
 
 [node name="Enemy_kobold_s" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 5
@@ -79,12 +79,14 @@ libraries = {
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_vuxmm")
 
 [node name="HitBox" parent="." instance=ExtResource("4_7oshy")]
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_73wqc")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

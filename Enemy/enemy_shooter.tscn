@@ -49,10 +49,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuxmm"]
-size = Vector2(35, 22)
+size = Vector2(31, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73wqc"]
-size = Vector2(35.75, 22)
+size = Vector2(23.875, 15)
 
 [node name="Enemy_shooter" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 5
@@ -79,13 +79,14 @@ libraries = {
 collision_mask = 5
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(-0.5, 0)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_vuxmm")
 
 [node name="HitBox" parent="." instance=ExtResource("4_fvfjj")]
 collision_layer = 3
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_73wqc")
 
 [node name="ShootTimer" type="Timer" parent="."]

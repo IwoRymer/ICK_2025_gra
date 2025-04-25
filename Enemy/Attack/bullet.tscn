@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dki33c1a7yjeo"]
 
 [ext_resource type="Script" uid="uid://f5k43yxf8onh" path="res://Enemy/Attack/bullet.gd" id="1_bvg38"]
-[ext_resource type="Texture2D" uid="uid://2ouppabugbc" path="res://Textures/Items/Weapons/ice_spear.png" id="2_301lp"]
+[ext_resource type="Texture2D" uid="uid://d3su41atx7hk" path="res://Textures/Items/Weapons/plasma_spear_pixelart_k_p.png" id="2_u4wxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da7se"]
-size = Vector2(4.94975, 31.1127)
+size = Vector2(4.94975, 18.3848)
 
 [node name="bullet" type="Area2D" groups=["enemy_attack"]]
 collision_layer = 2
@@ -12,9 +12,10 @@ script = ExtResource("1_bvg38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_301lp")
+texture = ExtResource("2_u4wxr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.6, -2.6)
 rotation = -0.785398
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_da7se")

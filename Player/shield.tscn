@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt60hq3787bmm"]
 
-[ext_resource type="Texture2D" uid="uid://boc3b0g7c4dr4" path="res://Textures/Player/tarcza.jpg" id="1_vuocu"]
+[ext_resource type="Texture2D" uid="uid://d3n3byala1bep" path="res://Textures/Player/techpriest_sama_tarcza.png" id="1_x4en3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffst0"]
 radius = 30.8058
@@ -9,7 +9,7 @@ radius = 30.8058
 visible = false
 
 [node name="ShieldSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_vuocu")
+texture = ExtResource("1_x4en3")
 
 [node name="ShieldCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
