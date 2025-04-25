@@ -57,6 +57,7 @@ func deactivate():
 		ray_cast.enabled = false
 		audio.stop()
 		animation.play("stop_beam")
+		Input.action_release("Fire_laser")
 		
 func calculate_laser():
 	var end_x = 0

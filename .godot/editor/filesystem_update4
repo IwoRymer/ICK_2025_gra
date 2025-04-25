@@ -9,3 +9,5 @@ res://Player/ice_spear.tscn
 res://Enemy/enemy_shooter.tscn
 res://Enemy/Attack/bullet.tscn
 res://Player/shield.tscn
+res://Player/player.gd
+res://Player/Attack/laser.gd
