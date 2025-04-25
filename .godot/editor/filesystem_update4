@@ -8,3 +8,4 @@ res://Enemy/enemy_kobold_s.tscn
 res://Player/player.tscn
 res://Player/ice_spear.tscn
 res://Enemy/enemy_shooter.tscn
+res://Player/player.gd

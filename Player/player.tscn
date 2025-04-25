@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b75a1aocdsdv3"]
+[gd_scene load_steps=10 format=3 uid="uid://b75a1aocdsdv3"]
 
 [ext_resource type="Script" uid="uid://dvdmc4ip1c1fo" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://c6lb0e1oi38lt" path="res://Textures/Player/techpriest_sprite_2frames_bez_tla.png" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://cx56lowgyoqld" path="res://Player/Attack/laser.tscn" id="4_gwnis"]
 [ext_resource type="PackedScene" uid="uid://dt60hq3787bmm" path="res://Player/shield.tscn" id="5_k53q1"]
+[ext_resource type="Texture2D" uid="uid://bikro6kq5kmb4" path="res://Textures/game_over_background.jpg" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 5.0
@@ -95,6 +96,32 @@ offset_right = 313.0
 offset_bottom = 172.0
 theme_override_colors/default_color = Color(1, 0, 0.0141214, 1)
 theme_override_font_sizes/normal_font_size = 40
+
+[node name="GameOverScreen" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="GameOverText" type="RichTextLabel" parent="GameOverScreen"]
+z_index = 20
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -21.0
+offset_right = 89.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "GAME OVER"
+
+[node name="GameOverBackground" type="Sprite2D" parent="GameOverScreen"]
+z_index = 10
+scale = Vector2(1000, 1000)
+texture = ExtResource("6_fhl08")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attacks/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]

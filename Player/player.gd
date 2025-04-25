@@ -51,6 +51,7 @@ var EnemyClose = []
 @onready var sprite = $Sprite2D
 @onready var walkTimer = get_node("%walkTimer")
 @onready var hpDisplay = get_node("%HpDisplay")
+@onready var gameOverScreen = get_node("%GameOverScreen")
 
 ## delta default = 1/60 s
 
@@ -85,6 +86,10 @@ func _process(delta: float) -> void:
 		laser.laser_right = 1
 	else:
 		laser.laser_right = 0
+		
+	#game over
+	if hp <= 0:
+		gameOverScreen.set_visible(true)
 
 func _physics_process(delta: float) -> void:
 	movement()
