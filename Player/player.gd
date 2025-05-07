@@ -91,6 +91,8 @@ func _process(delta: float) -> void:
 	if hp <= 0:
 		#gameOverScreen.set_visible(true)
 		pass
+		#gameOverScreen.set_visible(true)
+		pass
 
 func _physics_process(delta: float) -> void:
 	movement()
@@ -237,7 +239,6 @@ func release(action):
 func _on_udp_server_client_control(control_vals: Variant) -> void:
 	#print(control_vals)
 	if control_vals[2] != null:
-		print(control_vals)
 		if control_vals[2][0] == "4":
 			heal(healing_amount)
 		if control_vals[2][0] == "3": 
@@ -262,12 +263,32 @@ func _on_udp_server_client_control(control_vals: Variant) -> void:
 			hold("right")
 		else:
 			release("right")
-	
+			
 	if control_vals[0] != null:
-		print(control_vals)	
-		if control_vals[0][5] == "1":
+		print(control_vals)
+		if control_vals[0][2] == "1":
 			hold("Fire_laser")
 			
+		if control_vals[0][7] == "1":
+			hold("attk_up")
+		else:
+			release("attk_up")
+			
+		if control_vals[0][8] == "1":
+			hold("attk_down")
+		else:
+			release("attk_down")
+			
+		if control_vals[0][5] == "1":
+			hold("attk_left")
+		else:
+			release("attk_left")
+			
+		if control_vals[0][6] == "1":
+			hold("attk_right")
+		else:
+			release("attk_right")
+
 func activate_shield():
 	if not shield_active and can_use_shield:
 		shield_active = true
