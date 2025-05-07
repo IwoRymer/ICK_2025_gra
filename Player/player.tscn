@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b75a1aocdsdv3"]
+[gd_scene load_steps=10 format=3 uid="uid://b75a1aocdsdv3"]
 
 [ext_resource type="Script" uid="uid://dvdmc4ip1c1fo" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://damtf0q0563bw" path="res://Textures/Player/player_sprite.png" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://c6lb0e1oi38lt" path="res://Textures/Player/techpriest_sprite_2frames_bez_tla.png" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://cx56lowgyoqld" path="res://Player/Attack/laser.tscn" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://dt60hq3787bmm" path="res://Player/shield.tscn" id="5_k53q1"]
+[ext_resource type="Texture2D" uid="uid://bikro6kq5kmb4" path="res://Textures/game_over_background.jpg" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 5.0
@@ -16,7 +19,7 @@ motion_mode = 1
 script = ExtResource("1_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_l8h54")
+texture = ExtResource("2_k53q1")
 flip_h = true
 hframes = 2
 
@@ -39,6 +42,94 @@ collision_mask = 2
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_gwnis")
 
+[node name="Attacks" type="Node2D" parent="."]
+
+[node name="IceSpearTimer" type="Timer" parent="Attacks"]
+wait_time = 1.5
+
+[node name="IceSpearAttackTImer" type="Timer" parent="Attacks/IceSpearTimer"]
+wait_time = 0.075
+
+[node name="TornadoTimer" type="Timer" parent="Attacks"]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="TornadoAttackTimer" type="Timer" parent="Attacks/TornadoTimer"]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_btcbx")
+
+[node name="Laser" parent="." instance=ExtResource("4_gwnis")]
+position = Vector2(3, 0)
+
+[node name="healTImer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="shieldTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="shieldCooldownTImer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[node name="Shield" parent="." instance=ExtResource("5_k53q1")]
+
+[node name="HpDisplay" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 253.0
+offset_top = 113.0
+offset_right = 313.0
+offset_bottom = 172.0
+theme_override_colors/default_color = Color(1, 0, 0.0141214, 1)
+theme_override_font_sizes/normal_font_size = 40
+
+[node name="GameOverScreen" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="GameOverText" type="RichTextLabel" parent="GameOverScreen"]
+z_index = 20
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -21.0
+offset_right = 89.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "GAME OVER"
+
+[node name="GameOverBackground" type="Sprite2D" parent="GameOverScreen"]
+z_index = 10
+scale = Vector2(1000, 1000)
+texture = ExtResource("6_fhl08")
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Attacks/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
+[connection signal="timeout" from="Attacks/IceSpearTimer/IceSpearAttackTImer" to="." method="_on_ice_spear_attack_t_imer_timeout"]
+[connection signal="timeout" from="Attacks/TornadoTimer" to="." method="_on_tornado_timer_timeout"]
+[connection signal="timeout" from="Attacks/TornadoTimer/TornadoAttackTimer" to="." method="_on_tornado_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+[connection signal="timeout" from="healTImer" to="." method="_on_heal_t_imer_timeout"]
+[connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="shieldCooldownTImer" to="." method="_on_shield_cooldown_t_imer_timeout"]
 
 [editable path="HurtBox"]
+[editable path="Shield"]

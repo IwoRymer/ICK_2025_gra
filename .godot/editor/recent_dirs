@@ -1,5 +1,2 @@
-res://Enemy/Attack
-res://utility
-res://Enemy
-res://Player
-res://World
+res://Textures/Player
+res://Textures/Items/Weapons

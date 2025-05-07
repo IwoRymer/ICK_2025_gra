@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://b75a1aocdsdv3"]
+
+[ext_resource type="Script" uid="uid://dvdmc4ip1c1fo" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://c6lb0e1oi38lt" path="res://Textures/Player/techpriest_sprite_2frames_bez_tla.png" id="2_k53q1"]
+[ext_resource type="PackedScene" uid="uid://7ywnno2cpwrg" path="res://utility/hurt_box.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://cx56lowgyoqld" path="res://Player/Attack/laser.tscn" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://dt60hq3787bmm" path="res://Player/shield.tscn" id="5_k53q1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwnis"]
+size = Vector2(14.5, 22.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btcbx"]
+radius = 368.49
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_4ntmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k53q1")
+flip_h = true
+hframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_4ntmi")
+
+[node name="walkTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[node name="HurtBox" parent="." instance=ExtResource("3_btcbx")]
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_gwnis")
+
+[node name="Attacks" type="Node2D" parent="."]
+
+[node name="IceSpearTimer" type="Timer" parent="Attacks"]
+wait_time = 1.5
+
+[node name="IceSpearAttackTImer" type="Timer" parent="Attacks/IceSpearTimer"]
+wait_time = 0.075
+
+[node name="TornadoTimer" type="Timer" parent="Attacks"]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="TornadoAttackTimer" type="Timer" parent="Attacks/TornadoTimer"]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_btcbx")
+
+[node name="Laser" parent="." instance=ExtResource("4_gwnis")]
+position = Vector2(3, 0)
+
+[node name="healTImer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="shieldTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="shieldCooldownTImer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[node name="Shield" parent="." instance=ExtResource("5_k53q1")]
+
+[node name="HpDisplay" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 253.0
+offset_top = 113.0
+offset_right = 313.0
+offset_bottom = 172.0
+theme_override_colors/default_color = Color(1, 0, 0.0141214, 1)
+theme_override_font_sizes/normal_font_size = 40
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Attacks/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
+[connection signal="timeout" from="Attacks/IceSpearTimer/IceSpearAttackTImer" to="." method="_on_ice_spear_attack_t_imer_timeout"]
+[connection signal="timeout" from="Attacks/TornadoTimer" to="." method="_on_tornado_timer_timeout"]
+[connection signal="timeout" from="Attacks/TornadoTimer/TornadoAttackTimer" to="." method="_on_tornado_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+[connection signal="timeout" from="healTImer" to="." method="_on_heal_t_imer_timeout"]
+[connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="shieldCooldownTImer" to="." method="_on_shield_cooldown_t_imer_timeout"]
+
+[editable path="HurtBox"]
+[editable path="Shield"]

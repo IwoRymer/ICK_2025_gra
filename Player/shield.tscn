@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt60hq3787bmm"]
+
+[ext_resource type="Texture2D" uid="uid://d3n3byala1bep" path="res://Textures/Player/techpriest_sama_tarcza.png" id="1_x4en3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffst0"]
+radius = 30.8058
+
+[node name="Shield" type="Node2D"]
+visible = false
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_x4en3")
+
+[node name="ShieldCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_ffst0")
+disabled = true

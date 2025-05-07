@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8dk1t2gpdhtb"]
+
+[ext_resource type="Texture2D" uid="uid://bmv6l42k51agm" path="res://Textures/Enemy/asteroids.png" id="1_a5y0d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvwl4"]
+atlas = ExtResource("1_a5y0d")
+region = Rect2(132, 68, 56, 54)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5y0d"]
+radius = 16.1245
+
+[node name="StaticTarget" type="Area2D"]
+
+[node name="Asteroid" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_uvwl4")
+
+[node name="Asteroid_Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_a5y0d")
