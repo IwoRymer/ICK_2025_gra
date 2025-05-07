@@ -3,7 +3,7 @@ extends Area2D
 var level = 1
 var hp = 9999
 var speed = 100.0
-var damage = 5
+var damage = 10
 var attack_size = 1.0
 var last_movement = Vector2.ZERO
 var angle = Vector2.ZERO

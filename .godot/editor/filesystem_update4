@@ -9,3 +9,14 @@ res://Player/ice_spear.tscn
 res://Enemy/enemy_shooter.tscn
 res://Enemy/Attack/bullet.tscn
 res://Player/shield.tscn
+res://Player/Attack/laser.gd
+res://Player/player.gd
+res://Enemy/enemy_shooter.gd
+res://Enemy/shooting_enemy.tscn
+res://Enemy/shooting_enemy.gd
+res://Enemy/enemy_kobold_w.tscn
+res://Enemy/enemy_cyclops.tscn
+res://Player/Attack/tornado.gd
+res://Enemy/Attack/shooter_bullet.gd
+res://Enemy/Attack/shooter_bullet.tscn
+res://utility/hurt_box.tscn

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbad64o27a5k7"]
+[gd_scene load_steps=15 format=3 uid="uid://cbad64o27a5k7"]
 
 [ext_resource type="Texture2D" uid="uid://b1v1c8da06e2q" path="res://Textures/1_finalne_tlo_brudna_metalowa_posadzka_z_rurami_i_sciekiem_v6.png" id="1_oe8m4"]
 [ext_resource type="PackedScene" uid="uid://b75a1aocdsdv3" path="res://Player/player.tscn" id="2_8a836"]
@@ -8,24 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://c8dk1t2gpdhtb" path="res://Enemy/Static_target.tscn" id="7_yf0ba"]
 [ext_resource type="PackedScene" uid="uid://cxhef011devt8" path="res://udp_server.tscn" id="8_eidgh"]
 [ext_resource type="PackedScene" uid="uid://bu7wa7x0v2jx3" path="res://Enemy/enemy_kobold_s.tscn" id="8_oe8m4"]
-[ext_resource type="PackedScene" uid="uid://brlskw0rqqcgb" path="res://Enemy/enemy_shooter.tscn" id="9_oe8m4"]
+[ext_resource type="PackedScene" uid="uid://6n1ptjcw3d6s" path="res://Enemy/enemy_cyclops.tscn" id="9_w47uh"]
+[ext_resource type="PackedScene" uid="uid://djdreisjeu2dd" path="res://Enemy/shooting_enemy.tscn" id="11_lo5ox"]
 
 [sub_resource type="Resource" id="Resource_3f78f"]
 script = ExtResource("4_3f78f")
 time_start = 0
 time_end = 100
 enemy = ExtResource("5_k8do8")
-enemy_num = 1
-enemy_spawn_delay = 5
+enemy_num = 2
+enemy_spawn_delay = 10
 metadata/_custom_type_script = "uid://bp8c7eepkxp5y"
 
 [sub_resource type="Resource" id="Resource_k8do8"]
 script = ExtResource("4_3f78f")
 time_start = 0
 time_end = 100
-enemy = ExtResource("9_oe8m4")
-enemy_num = 2
-enemy_spawn_delay = 15
+enemy = ExtResource("11_lo5ox")
+enemy_num = 1
+enemy_spawn_delay = 20
 metadata/_custom_type_script = "uid://bp8c7eepkxp5y"
 
 [sub_resource type="Resource" id="Resource_w47uh"]
@@ -34,7 +35,16 @@ time_start = 0
 time_end = 100
 enemy = ExtResource("8_oe8m4")
 enemy_num = 1
-enemy_spawn_delay = 5
+enemy_spawn_delay = 10
+metadata/_custom_type_script = "uid://bp8c7eepkxp5y"
+
+[sub_resource type="Resource" id="Resource_lo5ox"]
+script = ExtResource("4_3f78f")
+time_start = 0
+time_end = 100
+enemy = ExtResource("9_w47uh")
+enemy_num = 1
+enemy_spawn_delay = 20
 metadata/_custom_type_script = "uid://bp8c7eepkxp5y"
 
 [node name="World" type="Node2D"]
@@ -66,6 +76,7 @@ scale = Vector2(0.614286, 0.6)
 position = Vector2(2, 29)
 
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
+position = Vector2(0, -1)
 
 [node name="Enemy_kobold_w" parent="." instance=ExtResource("3_j8job")]
 position = Vector2(-305, 58)
@@ -74,7 +85,7 @@ position = Vector2(-305, 58)
 position = Vector2(-268, -72)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_j8job")]
-spawns = Array[ExtResource("4_3f78f")]([SubResource("Resource_3f78f"), SubResource("Resource_k8do8"), SubResource("Resource_w47uh")])
+spawns = Array[ExtResource("4_3f78f")]([SubResource("Resource_3f78f"), SubResource("Resource_k8do8"), SubResource("Resource_w47uh"), SubResource("Resource_lo5ox")])
 
 [node name="StaticTarget2" parent="." instance=ExtResource("7_yf0ba")]
 position = Vector2(350, -368)
@@ -86,12 +97,13 @@ scale = Vector2(0.614286, 0.6)
 [node name="Asteroid_Hurtbox" parent="StaticTarget2" index="1"]
 position = Vector2(2, 29)
 
-[node name="Enemy_shooter" parent="." instance=ExtResource("9_oe8m4")]
-position = Vector2(110, 52)
-
 [node name="UDPServer" parent="." instance=ExtResource("8_eidgh")]
+
+[node name="Shooting_enemy" parent="." instance=ExtResource("11_lo5ox")]
+position = Vector2(-76, -88)
 
 [connection signal="client_control" from="UDPServer" to="Player" method="_on_udp_server_client_control"]
 
 [editable path="Background/StaticTarget2"]
+[editable path="EnemySpawner"]
 [editable path="StaticTarget2"]

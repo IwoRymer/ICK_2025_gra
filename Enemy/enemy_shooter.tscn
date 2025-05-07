@@ -49,7 +49,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuxmm"]
-size = Vector2(31, 19)
+size = Vector2(37, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73wqc"]
 size = Vector2(23.875, 15)
@@ -60,6 +60,7 @@ collision_mask = 5
 script = ExtResource("1_6gwvv")
 bullet_scene = ExtResource("2_x8knb")
 shoot_range = 200.0
+hp = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
@@ -77,9 +78,11 @@ libraries = {
 
 [node name="HurtBox" parent="." instance=ExtResource("3_gnwba")]
 collision_mask = 5
+HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(-1, 0)
+visibility_layer = 5
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_vuxmm")
 
 [node name="HitBox" parent="." instance=ExtResource("4_fvfjj")]
@@ -90,6 +93,9 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_73wqc")
 
 [node name="ShootTimer" type="Timer" parent="."]
+
+[node name="ShootAttkTimer" type="Timer" parent="ShootTimer"]
+unique_name_in_owner = true
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

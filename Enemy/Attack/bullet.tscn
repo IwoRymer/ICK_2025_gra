@@ -4,18 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://d3su41atx7hk" path="res://Textures/Items/Weapons/plasma_spear_pixelart_k_p.png" id="2_u4wxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da7se"]
-size = Vector2(4.94975, 18.3848)
+size = Vector2(5.3033, 16.2635)
 
 [node name="bullet" type="Area2D" groups=["enemy_attack"]]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_bvg38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_u4wxr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.6, -2.6)
+position = Vector2(2.25, 2.75)
 rotation = -0.785398
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_da7se")
@@ -25,5 +27,11 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="DamageTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

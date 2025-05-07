@@ -29,6 +29,7 @@ func _on_shoot_timer_timeout():
 		shoot()
 
 func _on_hurt_box_hurt(damage: Variant) -> void:
+	print('shooter taking damage')
 	hp -= damage
 	if hp <= 0:
 		queue_free()

@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2w73e4ag0rek"]
+
+[ext_resource type="Script" uid="uid://dwf0n06d4in83" path="res://Enemy/Attack/shooter_bullet.gd" id="1_jx8j8"]
+[ext_resource type="Texture2D" uid="uid://d3su41atx7hk" path="res://Textures/Items/Weapons/plasma_spear_pixelart_k_p.png" id="1_x7epn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx8j8"]
+size = Vector2(3.53553, 8.48528)
+
+[node name="Shooter_bullet" type="Area2D"]
+top_level = true
+light_mask = 3
+visibility_layer = 3
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_jx8j8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-2.25, -1.75)
+rotation = -0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_jx8j8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("1_x7epn")
+
+[node name="DestructorTImer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DestructorTImer" to="." method="_on_destructor_t_imer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

@@ -1,12 +1,12 @@
 extends Node2D
 
 @export var beam_length : float = 300
-@export var laser_damage = 50
+@export var laser_damage = 5
 
 @export var laser_charge_max = 3600
-@export var laser_recharge = 4
-@export var laser_usage = 20
-@export var laser_min_charge = 0.2 #percent charge min
+@export var laser_recharge = 10
+@export var laser_usage = 10
+@export var laser_min_charge = 0 #percent charge min
 var laser_charge = laser_charge_max
 
 @onready var beam: Line2D = $Beam
@@ -57,6 +57,7 @@ func deactivate():
 		ray_cast.enabled = false
 		audio.stop()
 		animation.play("stop_beam")
+		Input.action_release("Fire_laser")
 		
 func calculate_laser():
 	var end_x = 0
@@ -101,6 +102,9 @@ func _ready() -> void:
 func _check_laser_hit() -> void:
 	if ray_cast.is_colliding():
 			_set_length(to_local(ray_cast.get_collision_point()).x, ray_cast.get_collision_point().y)
+			var collider = ray_cast.get_collider()
+			if collider && collider.has_method("_on_hurt_box_hurt"):
+				collider._on_hurt_box_hurt(laser_damage)
 			
 func _check_if_atk_changed() -> bool:
 	if (laser_up != laser_up_old) || (laser_down != laser_down_old) || (laser_left != laser_left_old) || (laser_right != laser_right_old):

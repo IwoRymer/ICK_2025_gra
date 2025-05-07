@@ -14,7 +14,7 @@ var Tornado = preload("res://Player/Attack/tornado.tscn")
 @onready var player: CharacterBody2D = $"."
 @onready var laser: Node2D = $Laser
 
-var healing_amount = 10
+var healing_amount = 30
 var healing_cooldown = 5 #s
 
 var can_use_shield = true
@@ -89,7 +89,8 @@ func _process(delta: float) -> void:
 		
 	#game over
 	if hp <= 0:
-		gameOverScreen.set_visible(true)
+		#gameOverScreen.set_visible(true)
+		pass
 
 func _physics_process(delta: float) -> void:
 	movement()
@@ -147,7 +148,7 @@ func _on_hurt_box_hurt(damage: Variant) -> void:
 		print("Tarcza aktywna – brak obrażeń")
 		return
 	hp -= damage
-	print(hp)
+	#print(hp)
 	pass # Replace with function body.
 
 
@@ -215,7 +216,7 @@ func take_damage(dmg: int):
 		print("Tarcza aktywna – brak obrażeń")
 		return
 	hp -= dmg
-	print("pocisk ",hp)
+	#print("pocisk ",hp)
 
 
 func _on_heal_t_imer_timeout() -> void:
@@ -235,10 +236,11 @@ func release(action):
 
 func _on_udp_server_client_control(control_vals: Variant) -> void:
 	#print(control_vals)
-	if control_vals[0] != null:
-		if control_vals[0][0] == "1":
+	if control_vals[2] != null:
+		print(control_vals)
+		if control_vals[2][0] == "4":
 			heal(healing_amount)
-		if control_vals[0][0] == "2": 
+		if control_vals[2][0] == "3": 
 			activate_shield()
 			
 	#movement from openpose
@@ -260,7 +262,12 @@ func _on_udp_server_client_control(control_vals: Variant) -> void:
 			hold("right")
 		else:
 			release("right")
-
+	
+	if control_vals[0] != null:
+		print(control_vals)	
+		if control_vals[0][5] == "1":
+			hold("Fire_laser")
+			
 func activate_shield():
 	if not shield_active and can_use_shield:
 		shield_active = true
